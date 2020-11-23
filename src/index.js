@@ -7,9 +7,34 @@
 // Morning = red, Afternoon = green, Night = blue.
 
 import React from "react";
-import ReactDOM, { render } from "react-dom";
+import ReactDOM from "react-dom";
 
-const morn = "Good Morning";
-const aftn = "Good Afternoon";
+// var d = new Date().getHours();
+// var d = new Date();
 
-ReactDOM.render(<h1>Good Morning!</h1>, document.getElementById("root"));
+var greeting = undefined;
+const customColor = {
+  color: ""
+};
+
+const time = new Date(2020, 11, 22, 14);
+const time2 = time.getHours();
+
+if (time2 === 24 || time2 < 12) {
+  greeting = "Good Morning";
+  customColor.color = "red";
+} else if (time2 === 12 || time2 <= 18) {
+  greeting = "Good Afternoon";
+  customColor.color = "green";
+} else {
+  greeting = "Good Evening";
+  customColor.color = "blue";
+}
+
+ReactDOM.render(
+  <h1 className="heading" style={customColor}>
+    {greeting}!
+  </h1>,
+
+  document.getElementById("root")
+);
